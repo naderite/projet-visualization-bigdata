@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projet Pratique 2026 - Dashboard Retail D3.js</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="backdrop orb-a"></div>
+  <div class="backdrop orb-b"></div>
+
+  <header class="hero">
+    <p class="eyebrow">Visualisation des donnees massives 2026</p>
+    <h1>Dashboard Retail Business - Sample Superstore</h1>
+    <p class="subtitle">
+      Analyse interactive des ventes, de la profitabilite et de la structure clients.
+      Implementation D3.js alignee avec les patterns vus dans CH1-CH4 et TP1-TP3.
+    </p>
+  </header>
+
+  <main class="layout">
+    <section class="panel controls">
+      <h2>Filtres globaux</h2>
+      <div class="controls-grid">
+        <label>
+          Date debut
+          <input id="dateStart" type="month" />
+        </label>
+
+        <label>
+          Date fin
+          <input id="dateEnd" type="month" />
+        </label>
+
+        <label>
+          Region
+          <select id="regionSelect"></select>
+        </label>
+
+        <label>
+          Category
+          <select id="categorySelect"></select>
+        </label>
+
+        <label>
+          Segment
+          <select id="segmentSelect"></select>
+        </label>
+
+        <label>
+          Metrique tendance
+          <select id="metricSelect">
+            <option value="sales">Sales</option>
+            <option value="profit">Profit</option>
+          </select>
+        </label>
+
+        <label>
+          Top N regions
+          <input id="topN" type="range" min="2" max="8" value="4" />
+          <span id="topNValue">4</span>
+        </label>
+      </div>
+    </section>
+
+    <section class="kpis" id="kpiCards"></section>
+
+    <section class="panel">
+      <div class="title-row">
+        <h2>Tendance mensuelle (Sales / Profit)</h2>
+        <p id="lineSummary" class="hint"></p>
+      </div>
+      <div id="lineChart" class="chart large"></div>
+    </section>
+
+    <section class="grid-2">
+      <section class="panel">
+        <div class="title-row">
+          <h2>Performance par Region</h2>
+          <p class="hint">Classement sur la metrique selectionnee.</p>
+        </div>
+        <div id="barChart" class="chart medium"></div>
+      </section>
+
+      <section class="panel">
+        <div class="title-row">
+          <h2>Repartition des ventes par Segment</h2>
+          <p class="hint">Part de CA par type de client.</p>
+        </div>
+        <div id="donutChart" class="chart medium"></div>
+      </section>
+    </section>
+
+    <section class="panel">
+      <div class="title-row">
+        <h2>Discount vs Profit (echantillon)</h2>
+        <p class="hint">Identifier les zones de perte liees aux remises.</p>
+      </div>
+      <div id="scatterChart" class="chart large"></div>
+    </section>
+
+    <section class="panel">
+      <h2>Insights metier automatiques</h2>
+      <ul id="insightsList"></ul>
+    </section>
+  </main>
+
+  <div id="tooltip" class="tooltip"></div>
+
+  <script src="vendor/d3.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
